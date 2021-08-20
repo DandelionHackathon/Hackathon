@@ -7,7 +7,7 @@ use frame_benchmarking::{benchmarks, whitelisted_caller, impl_benchmark_test_sui
 use sp_std::{vec, vec::Vec, boxed::Box};
 
 #[allow(unused)]
-use crate::Module as Template;
+use crate::Module as Dandelion;
 
 benchmarks! {
 	do_something {
@@ -20,7 +20,7 @@ benchmarks! {
 }
 
 impl_benchmark_test_suite!(
-	Template,
+	Dandelion,
 	crate::mock::new_test_ext(),
 	crate::mock::Test,
 );
