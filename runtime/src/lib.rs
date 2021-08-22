@@ -268,6 +268,7 @@ impl pallet_sudo::Config for Runtime {
 /// Configure the pallet-dandelion in pallets/dandelion.
 impl pallet_dandelion::Config for Runtime {
 	type Event = Event;
+	type ProveRandomness = RandomnessCollectiveFlip;
 }
 
 // Create the runtime by composing the FRAME pallets that were previously configured.

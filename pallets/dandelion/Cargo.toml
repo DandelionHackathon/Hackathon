@@ -18,10 +18,12 @@ frame-system = { default-features = false, version = '3.0.0' }
 frame-support = { default-features = false, version = '3.0.0' }
 frame-benchmarking = { default-features = false, optional = true, version = '3.1.0' }
 sp-std = { default-features = false, version = '3.0.0' }
+pallet-randomness-collective-flip = { default-features = false, version = '3.0.0' }
+pallet-balances = { default-features = false, version = '3.0.0' }
+sp-core = { default-features = false, version = '3.0.0' }
+serde = { version = "1.0.119" }
 
 [dev-dependencies]
-serde = { version = "1.0.119" }
-sp-core = { default-features = false, version = '3.0.0' }
 sp-io = { default-features = false, version = '3.0.0' }
 sp-runtime = { default-features = false, version = '3.0.0' }
 
@@ -33,6 +35,9 @@ std = [
 	'frame-system/std',
 	'frame-benchmarking/std',
 	'sp-std/std',
+#	'pallet-randomness-collective-flip/std',
+#	'sp-core/std',
+#	'serde/std',
 ]
 runtime-benchmarks = [
 	'frame-benchmarking',
