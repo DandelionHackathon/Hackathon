@@ -15,6 +15,7 @@ pub mod pallet {
 	use frame_support::traits::Randomness;
 	use frame_system::pallet_prelude::*;
 	use sp_core::H256;
+    use sp_std::vec::Vec;
 
     #[pallet::pallet]
     #[pallet::generate_store(trait Store)]
@@ -58,7 +59,7 @@ pub mod pallet {
     #[pallet::storage]
     #[pallet::getter(fn prove)]
     pub(super) type Proves<T: Config> =
-    StorageMap<_, Twox64Concat, T::Hash, u128, ValueQuery>;
+    StorageMap<_, Twox64Concat, T::Hash, Vec<u8>, ValueQuery>;
 
     // Keeps track of what accounts own what Prove.
     #[pallet::storage]
@@ -117,7 +118,7 @@ pub mod pallet {
     impl<T: Config> GenesisBuild<T> for GenesisConfig<T> {
         fn build(&self) {
             for &(ref acct, hash) in &self.proves {
-                let _ = <Module<T>>::mint(acct.clone(), hash, 123456);
+                let _ = <Module<T>>::mint(acct.clone(), hash, vec![1,2]);
             }
         }
     }
@@ -140,7 +141,7 @@ pub mod pallet {
         ///
         /// Weight: `O(1)`
         #[pallet::weight(100)]
-        pub fn create_prove(origin: OriginFor<T>, file_hash: u128) -> DispatchResultWithPostInfo {
+        pub fn create_prove(origin: OriginFor<T>, file_hash: Vec<u8>) -> DispatchResultWithPostInfo {
             let sender = ensure_signed(origin)?;
             let random_hash = Self::random_hash(&sender);
 
@@ -177,7 +178,7 @@ pub mod pallet {
         fn mint(
             to: T::AccountId,
             prove_id: T::Hash,
-            file_hash: u128,
+            file_hash: Vec<u8>,
         ) -> DispatchResult {
             ensure!(
                 !<ProveOwner<T>>::contains_key(prove_id),
