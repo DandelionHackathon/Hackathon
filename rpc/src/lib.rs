@@ -1,6 +1,5 @@
 use jsonrpc_core::{Error as RpcError, ErrorCode, Result};
 use jsonrpc_derive::rpc;
-use sc_client_api::backend::Backend;
 use sc_service::Arc;
 use sp_api::ProvideRuntimeApi;
 use sp_runtime::{generic::BlockId, traits::Block as BlockT};
@@ -8,7 +7,6 @@ extern crate alloc;
 use alloc::vec::Vec;
 
 pub mod dandelion_rpc {
-    use node_dandelion_runtime::{AccountId, BlockNumber};
     use sc_client_api::blockchain::HeaderBackend;
 
     use super::*;
@@ -54,7 +52,7 @@ pub mod dandelion_rpc {
             runtime_api_result.map_err(|e| RpcError {
                 code: ErrorCode::ServerError(1234),
                 message: "Get file hash failed.".into(),
-                data: Some(format!("{:?}",e).into()),
+                data: Some(format!("{:?}", e).into()),
             })
         }
     }
