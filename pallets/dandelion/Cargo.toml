@@ -21,6 +21,7 @@ sp-std = { default-features = false, version = '3.0.0' }
 pallet-randomness-collective-flip = { default-features = false, version = '3.0.0' }
 pallet-balances = { default-features = false, version = '3.0.0' }
 sp-core = { default-features = false, version = '3.0.0' }
+sp-api = { default-features = false, version = '3.0.0' }
 serde = { version = "1.0.119" }
 
 [dev-dependencies]
@@ -35,6 +36,7 @@ std = [
 	'frame-system/std',
 	'frame-benchmarking/std',
 	'sp-std/std',
+	'sp-api/std',
 #	'pallet-randomness-collective-flip/std',
 #	'sp-core/std',
 #	'serde/std',
