@@ -3524,7 +3524,9 @@ dependencies = [
  "frame-benchmarking-cli",
  "jsonrpc-core",
  "node-dandelion-runtime",
+ "pallet-dandelion",
  "pallet-transaction-payment-rpc",
+ "rpc",
  "sc-basic-authorship",
  "sc-cli",
  "sc-client-api",
@@ -3787,6 +3789,7 @@ dependencies = [
  "pallet-randomness-collective-flip",
  "parity-scale-codec",
  "serde",
+ "sp-api",
  "sp-core",
  "sp-io",
  "sp-runtime",
@@ -3933,9 +3936,9 @@ dependencies = [
 
 [[package]]
 name = "parity-db"
-version = "0.2.3"
+version = "0.2.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "495197c078e54b8735181aa35c00a327f7f3a3cc00a1ee8c95926dd010f0ec6b"
+checksum = "2e337f62db341435f0da05b8f6b97e984ef4ea5800510cd07c2d624688c40b47"
 dependencies = [
  "blake2-rfc",
  "crc32fast",
@@ -4920,6 +4923,23 @@ checksum = "ffc936cf8a7ea60c58f030fd36a612a48f440610214dc54bc36431f9ea0c3efb"
 dependencies = [
  "libc",
  "winapi 0.3.9",
+]
+
+[[package]]
+name = "rpc"
+version = "0.1.0"
+dependencies = [
+ "frame-system",
+ "jsonrpc-core",
+ "jsonrpc-core-client",
+ "jsonrpc-derive",
+ "node-dandelion-runtime",
+ "pallet-dandelion",
+ "parity-scale-codec",
+ "sc-client-api",
+ "sc-service",
+ "sp-api",
+ "sp-runtime",
 ]
 
 [[package]]
