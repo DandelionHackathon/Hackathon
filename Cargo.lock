@@ -3557,7 +3557,6 @@ dependencies = [
  "pallet-grandpa",
  "pallet-randomness-collective-flip",
  "pallet-sudo",
- "pallet-template",
  "pallet-timestamp",
  "pallet-transaction-payment",
  "pallet-transaction-payment-rpc-runtime-api",
@@ -3775,7 +3774,7 @@ dependencies = [
 
 [[package]]
 name = "pallet-dandelion"
-version = "3.0.0"
+version = "3.0.0-monthly-2021-10"
 dependencies = [
  "frame-benchmarking",
  "frame-support",
@@ -3783,7 +3782,7 @@ dependencies = [
  "pallet-balances",
  "pallet-randomness-collective-flip",
  "parity-scale-codec",
- "serde",
+ "scale-info",
  "sp-api",
  "sp-core",
  "sp-io",
@@ -3861,20 +3860,6 @@ dependencies = [
  "sp-io",
  "sp-runtime",
  "sp-std",
-]
-
-[[package]]
-name = "pallet-template"
-version = "3.0.0-monthly-2021-10"
-dependencies = [
- "frame-benchmarking",
- "frame-support",
- "frame-system",
- "parity-scale-codec",
- "scale-info",
- "sp-core",
- "sp-io",
- "sp-runtime",
 ]
 
 [[package]]

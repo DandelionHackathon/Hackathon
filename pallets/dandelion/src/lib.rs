@@ -4,6 +4,7 @@
 /// Learn more about FRAME and the core library of Substrate FRAME pallets:
 /// <https://substrate.dev/docs/en/knowledgebase/runtime/frame>
 pub use pallet::*;
+
 extern crate alloc;
 
 #[frame_support::pallet]
@@ -11,8 +12,8 @@ pub mod pallet {
 	use frame_support::{
 		dispatch::{DispatchResult, DispatchResultWithPostInfo},
 		pallet_prelude::*,
-		sp_runtime::traits::{Hash, Zero},
-		traits::{Currency, ExistenceRequirement, Randomness},
+		sp_runtime::traits::Hash,
+		traits::Randomness,
 	};
 	use frame_system::pallet_prelude::*;
 	use sp_core::H256;
@@ -29,7 +30,7 @@ pub mod pallet {
 		type Event: From<Event<Self>> + IsType<<Self as frame_system::Config>::Event>;
 
 		/// The type of Random we want to specify for runtime.
-		type ProveRandomness: Randomness<H256>;
+		type ProveRandomness: Randomness<H256, <Self as frame_system::Config>::BlockNumber>;
 	}
 
 	// Errors.
@@ -40,7 +41,6 @@ pub mod pallet {
 	}
 
 	#[pallet::event]
-	#[pallet::metadata(T::AccountId = "AccountId")]
 	#[pallet::generate_deposit(pub (super) fn deposit_event)]
 	pub enum Event<T: Config> {
 		Created(T::AccountId, T::Hash),
@@ -116,7 +116,7 @@ pub mod pallet {
 	impl<T: Config> GenesisBuild<T> for GenesisConfig<T> {
 		fn build(&self) {
 			for &(ref acct, hash) in &self.proves {
-				let _ = <Module<T>>::mint(acct.clone(), hash, vec![1, 2]);
+				let _ = <Pallet<T>>::mint(acct.clone(), hash, vec![1, 2]);
 			}
 		}
 	}
@@ -217,6 +217,7 @@ pub mod pallet {
 	}
 }
 use alloc::vec::Vec;
+
 sp_api::decl_runtime_apis! {
 	pub trait DandelionRuntimeApi<T: Config> {
 		fn get_file_hash(owner: T::AccountId) -> Vec<Vec<u8>>;
