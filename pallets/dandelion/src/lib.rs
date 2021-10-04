@@ -30,7 +30,7 @@ pub mod pallet {
 		type Event: From<Event<Self>> + IsType<<Self as frame_system::Config>::Event>;
 
 		/// The type of Random we want to specify for runtime.
-		type ProveRandomness: Randomness<H256,<Self as frame_system::Config>::BlockNumber>;
+		type ProveRandomness: Randomness<H256, <Self as frame_system::Config>::BlockNumber>;
 	}
 
 	// Errors.
